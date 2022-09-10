@@ -3,13 +3,13 @@ import pickle
 
 model=pickle.load(open('model.pkl','rb'))
 
-app1=Flask(__name__)
+app=Flask(__name__)
 
-@app1.route('/')
+@app.route('/')
 def homepage():
     return(render_template('stu.html'))
 
-@app1.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 def collectData():
     S=float(request.form['S'])
     F=float(request.form['F'])
@@ -21,4 +21,4 @@ def collectData():
     return(render_template('stu.html',result=str(result[0])))
 
 if __name__=="__main__":
-    app1.run(debug=True)
+    app.run(debug=True)
